@@ -1,10 +1,13 @@
-import Car from "./Models/Car.js"
+import {Car, House, Job} from "./Models/models.js"
 import { EventEmitter } from "./Utils/EventEmitter.js"
 import { isValidProp } from "./Utils/isValidProp.js"
 
 class AppState extends EventEmitter {
   /** @type {Car[]} */
   cars = [new Car({ make: "Benz", model: "1", year: 1985, price: 10000000, description: "Its old", imgUrl: "https://d1vl6ykwv1m2rb.cloudfront.net/blog/wp-content/uploads/2018/03/20142414/auto-11.jpg" })]
+
+  jobs = [new Job({company: "T-Sheets", jobTitle: "Senior Dev", hours: 40, rate: 100, description: "programming and whatnot"})]
+  houses = [new House({bedrooms: 2, bathrooms: 2, levels: 2, imgUrl: 'https://odis.homeaway.com/odis/listing/8baa342c-e68d-483f-b833-d630240c995d.f6.jpg', year: 2015, price: 400000, description: 'its alright' })]
 }
 
 export const ProxyState = new Proxy(new AppState(), {

@@ -1,5 +1,5 @@
 import { ProxyState } from "../AppState.js"
-import Car from "../Models/Car.js"
+import {Car} from "../Models/models.js"
 
 class CarsService {
   deleteCar(id) {

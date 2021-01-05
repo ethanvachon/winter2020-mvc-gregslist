@@ -1,15 +1,21 @@
 import {ProxyState} from "../AppState.js"
 import {Job} from "../Models/models.js"
+import { api } from "./AxiosService.js"
 
 
 class JobService {
-  deleteHouse(id){
-    ProxyState.jobs = ProxyState.jobs.filter(job => job.id != id)
+  async getJobs() {
+    let res = await api.get("jobs")
+    ProxyState.jobs = res.data.map(i => new Job(i))
+  }
+  async deleteJob(id){
+    let job = await api.delete("jobs/"+id)
+    this.getJobs()
   }
 
-  createJob(newJob){
-    let job = new Job(newJob)
-    ProxyState.jobs = [...ProxyState.jobs, job]
+  async createJob(newJob){
+    let job = await api.post("jobs", newJob)
+    this.getJobs()
   }
 }
 

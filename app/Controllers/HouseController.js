@@ -1,4 +1,5 @@
 import {ProxyState} from "../AppState.js"
+import { carsService } from "../Services/CarsService.js"
 import {houseService} from "../Services/HouseService.js"
 
 function _drawHouses (){
@@ -15,6 +16,14 @@ export default class HouseController{
   constructor(){
     ProxyState.on('houses', _drawHouses)
     _drawHouses()
+    this.getHouses()
+  }
+  getHouses() {
+    try {
+      houseService.getHouses()
+    } catch (error) {
+      console.error(error)
+    }
   }
 
 
@@ -30,7 +39,11 @@ export default class HouseController{
       price: form['price'].value,
       description: form['description'].value,
     }
-    houseService.createHouse(newHouse)
+    try {
+      houseService.createHouse(newHouse)
+    } catch (error) {
+      console.error(error)
+    }
     // @ts-ignore
     form.reset()
     // @ts-ignore
@@ -38,6 +51,17 @@ export default class HouseController{
   }
 
   deleteHouse(id){
-    houseService.deleteHouse(id)
+    try {
+      houseService.deleteHouse(id)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+  bid(id, price){
+    try {
+      houseService.bid(id, price)
+    } catch (error) {
+      console.error(error)
+    }
   }
 }

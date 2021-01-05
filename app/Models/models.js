@@ -1,9 +1,8 @@
 import { generateId } from "../Utils/GenerateId.js"
 
 export class Car {
-  constructor({ make, model, year, price, description, imgUrl }) {
-    console.log("MODEL: constructor", 3)
-    this.id = generateId()
+  constructor({ make, model, year, price, description, imgUrl, id }) {
+    this.id = id
     this.make = make
     this.model = model
     this.year = year
@@ -22,6 +21,7 @@ export class Car {
             <p class="card-text">${this.description}</p>
             <p class="card-text">${this.price}</p>
             <div class="text-right">
+            <button type="button" class="btn btn-success" onclick="app.carsController.bid('${this.id}', '${this.price += 500}')">Bid</button>
                 <button type="button" class="btn btn-danger" onclick="app.carsController.deleteCar('${this.id}')">Delete</button>
             </div>
         </div>
@@ -33,8 +33,8 @@ export class Car {
 
 
 export class House {
-  constructor({bedrooms, bathrooms, levels, imgUrl, year, price, description}){
-    this.id = generateId()
+  constructor({bedrooms, bathrooms, levels, imgUrl, year, price, description, id}){
+    this.id = id
     this.bedrooms = bedrooms
     this.bathrooms = bathrooms
     this.levels = levels
@@ -55,6 +55,7 @@ export class House {
             <p class="card-text">${this.description}</p>
             <p class="card-text">${this.price}</p>
             <div class="text-right">
+            <button type="button" class="btn btn-success" onclick="app.houseController.bid('${this.id}', '${this.price += 500}')">Bid</button>
                 <button type="button" class="btn btn-danger" onclick="app.houseController.deleteHouse('${this.id}')">Delete</button>
             </div>
         </div>
@@ -65,8 +66,8 @@ export class House {
 }
 
 export class Job {
-  constructor({ company, jobTitle, hours, rate, description}){
-    this.id = generateId()
+  constructor({ company, jobTitle, hours, rate, description, id}){
+    this.id = id
     this.company = company
     this.jobTitle = jobTitle
     this.hours = hours
@@ -83,7 +84,7 @@ export class Job {
             <h5 class="card-text">${this.hours} hours at ${this.rate}/hour</h5>
             <p class="card-text">${this.description}</p>
             <div class="text-right">
-                <button type="button" class="btn btn-danger" onclick="app.jobsController.deleteJob('${this.id}')">Delete</button>
+                <button type="button" class="btn btn-danger" onclick="app.jobController.deleteJob('${this.id}')">Delete</button>
             </div>
         </div>
     </div>

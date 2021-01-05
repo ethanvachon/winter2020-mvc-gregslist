@@ -14,6 +14,21 @@ export default class JobsController{
   constructor(){
     ProxyState.on("jobs", _drawJobs)
     _drawJobs()
+    this.getJobs()
+  }
+  getJobs() {
+    try {
+      jobService.getJobs()
+    } catch (error) {
+      console.error(error)
+    }
+  }
+  deleteJob(id){
+    try {
+      jobService.deleteJob(id)
+    } catch (error) {
+      console.error(error)
+    }
   }
 
 
@@ -27,7 +42,11 @@ export default class JobsController{
       rate: form['rate'].value,
       description: form['description'].value,
     }
-    jobService.createJob(newJob)
+    try {
+      jobService.createJob(newJob)
+    } catch (error) {
+      console.error(error)
+    }
     // @ts-ignore
     form.reset()
     // @ts-ignore

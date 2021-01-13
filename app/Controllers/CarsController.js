@@ -13,10 +13,10 @@ function _drawCars() {
 export default class CarsController {
   constructor() {
     ProxyState.on("cars", _drawCars)
-    _drawCars()
     this.getCars()
+    _drawCars()
   }
-  getCars(){
+  getCars() {
     try {
       carsService.getCars()
     } catch (error) {
@@ -54,7 +54,7 @@ export default class CarsController {
       console.error(error)
     }
   }
-  bid(id, price){
+  bid(id, price) {
     try {
       carsService.bid(id, price)
     } catch (error) {

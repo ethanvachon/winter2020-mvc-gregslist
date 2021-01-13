@@ -1,8 +1,8 @@
 import { generateId } from "../Utils/GenerateId.js"
 
 export class Car {
-  constructor({ make, model, year, price, description, imgUrl, id }) {
-    this.id = id
+  constructor({ make, model, year, price, description, imgUrl, _id }) {
+    this.id = _id
     this.make = make
     this.model = model
     this.year = year
@@ -33,8 +33,8 @@ export class Car {
 
 
 export class House {
-  constructor({bedrooms, bathrooms, levels, imgUrl, year, price, description, id}){
-    this.id = id
+  constructor({ bedrooms, bathrooms, levels, imgUrl, year, price, description, _id }) {
+    this.id = _id
     this.bedrooms = bedrooms
     this.bathrooms = bathrooms
     this.levels = levels
@@ -44,7 +44,7 @@ export class House {
     this.description = description
   }
 
-  get Template(){
+  get Template() {
     return `
     <div class="col-md-4 col-6 mt-3">
     <div class="card">
@@ -66,8 +66,8 @@ export class House {
 }
 
 export class Job {
-  constructor({ company, jobTitle, hours, rate, description, id}){
-    this.id = id
+  constructor({ company, jobTitle, hours, rate, description, _id }) {
+    this.id = _id
     this.company = company
     this.jobTitle = jobTitle
     this.hours = hours

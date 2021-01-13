@@ -1,8 +1,8 @@
-import {ProxyState} from "../AppState.js"
+import { ProxyState } from "../AppState.js"
 import { carsService } from "../Services/CarsService.js"
-import {houseService} from "../Services/HouseService.js"
+import { houseService } from "../Services/HouseService.js"
 
-function _drawHouses (){
+function _drawHouses() {
   let house = ProxyState.houses
   let template = ''
   house.forEach(house => {
@@ -12,11 +12,11 @@ function _drawHouses (){
 }
 
 
-export default class HouseController{
-  constructor(){
+export default class HouseController {
+  constructor() {
     ProxyState.on('houses', _drawHouses)
-    _drawHouses()
     this.getHouses()
+    _drawHouses()
   }
   getHouses() {
     try {
@@ -27,7 +27,7 @@ export default class HouseController{
   }
 
 
-  createHouse(){
+  createHouse() {
     window.event.preventDefault()
     let form = window.event.target
     let newHouse = {
@@ -50,14 +50,14 @@ export default class HouseController{
     $("#new-house-modal").modal('hide');
   }
 
-  deleteHouse(id){
+  deleteHouse(id) {
     try {
       houseService.deleteHouse(id)
     } catch (error) {
       console.error(error)
     }
   }
-  bid(id, price){
+  bid(id, price) {
     try {
       houseService.bid(id, price)
     } catch (error) {
